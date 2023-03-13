@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import NavBar from './components/NavBar/NavBar';
 import './App.css'
 import Banners from './components/Banner/Banners';
@@ -11,6 +12,7 @@ function App(){
       <NavBar/>
       <Banners/>
       <RowPost/>
+      
     </div>
   )
 }
