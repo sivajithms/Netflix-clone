@@ -5,12 +5,16 @@ import axios from '../../axios'
 
 function Banners() {
   const [movie,setMovie] = useState()
-  useEffect(()=>{
-    axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((response)=>{
-      setMovie(response.data.results[1]);
-      console.log(response.data.results[6]);
-    })
-  },[])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios.get(`/discover/tv?api_key=${API_KEY}&with_networks=213`).then((response)=>{
+        setMovie(response.data.results[Math.floor(Math.random() * response.data.results.length)]);
+        console.log(response.data.results[0]);
+      });
+      }, 7000); 
+    return () => clearInterval(interval);
+  }, []);
+  
   return (
     <div className='banner' style={{backgroundImage:`url(${movie ? imageUrl+movie.backdrop_path : ""})`}}>
         <div className='content'>
