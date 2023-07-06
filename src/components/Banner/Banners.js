@@ -9,7 +9,7 @@ function Banners() {
     const interval = setInterval(() => {
       axios.get(`/discover/tv?api_key=${API_KEY}&with_networks=213`).then((response)=>{
         setMovie(response.data.results[Math.floor(Math.random() * response.data.results.length)]);
-        console.log(response.data.results[0]);
+        // console.log(response.data.results[0]);
       });
       }, 7000); 
     return () => clearInterval(interval);
